@@ -1,0 +1,24 @@
+from PyQt5 import QtWidgets, uic
+import sys
+
+from filterinterface import Ui_FilterWindow
+from newuserinterface import Ui_NewWindow
+class NewWindow(QtWidgets.QMainWindow):
+  def __init__(self):
+        super(NewWindow, self).__init__()
+        uic.loadUi('userInterface.ui', self)
+        self.show()
+        self.pushButton.clicked.connect(self.button_clicked)
+
+  def button_clicked(self):
+      FilterWindow = QtWidgets.QMainWindow()
+      ui = Ui_FilterWindow()
+      ui.setupUi(FilterWindow)
+      FilterWindow.show()
+      FilterWindow.exec_()
+
+if __name__ == '__main__':
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    window = NewWindow()
+    sys.exit(app.exec_())
